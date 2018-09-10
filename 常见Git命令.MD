@@ -1,6 +1,9 @@
-﻿记录一些常用的GIT命令先来2个网上找的原理图，方便理解。  
+﻿
+![image](./Docs/Git/Image1.png)
+![image](./Docs/Git/Image2.jpg)
+记录一些常用的GIT命令先来2个网上找的原理图，方便理解。  
 本质上GIT是多颗树  
->`workspace` 			一个是本地工作区  
+`workspace` 			一个是本地工作区  
 `index`					一个是本地暂存区，也就是我们add但是还未commit的  
 `Local repository`		一个是本地历史提交记录仓库。涵盖了我们在本地的所有提交  
 `Remote repository`		最后一个就是，远端的代码仓库区
@@ -46,9 +49,9 @@ http://www.ruanyifeng.com/blog/2014/06/git_remote.html
 
 - 注意如果需要修改 `Remote repository` 
 	- 一般都是 push -f。。 多人协作会有问题  
-		git reset --hard HEAD~1            //回滚当前分支某个提交   
-		git push master -f                 //因为落后远程库一个版本需要强制提交		     
-	- 多人协同时，比较安全的是revert，本质上会产生一次额外的提交，进而回滚某次提交
+	- git reset --hard HEAD~1  //回滚当前分支某个提交   
+	- git push master -f  //因为落后远程库一个版本需要强制提交		
+	- 多人协同时，比较安全的是revert，本质上会产生一次额外的提交，进而回滚某次提交	
 
 
 # 高级操作
@@ -98,5 +101,3 @@ http://www.ruanyifeng.com/blog/2014/06/git_remote.html
 
 
 ---
-![image](./Docs/Git/Image1.png)
-![image](./Docs/Git/Image2.jpg)
