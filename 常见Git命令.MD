@@ -6,37 +6,37 @@
 `Remote repository`		最后一个就是，远端的代码仓库区
 
 # 一些参考链接
->https://backlog.com/git-tutorial/cn/stepup/stepup7_1.html
+>https://backlog.com/git-tutorial/cn/stepup/stepup7_1.html  
 http://www.ruanyifeng.com/blog/2014/06/git_remote.html  
 [Git-工具-重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86)
 
 
 # 基本的操作
 - vim操作
-	```
+	```shell
 	ESC: wq!
 	```
 
 - 创建并切换分支
-	```
+	```shell
 	git branch -b  newbxxx oldxxx
 	```
 
 - 切换分支  
 	
-	```
+	```shell
 	git checkout  master
 	git checkout newxxx
 	```
 
 - 删除分支
   	
-	```
+	```shell
 	git branch -d deltexxx
 	```
 
 - 查看分支
-	```
+	```shell
 	git branch -avv(-vv)
 	```
 
@@ -45,9 +45,9 @@ http://www.ruanyifeng.com/blog/2014/06/git_remote.html
 	- 如果只是需要回归 add commit不用使用hard。
 
 - 注意如果需要修改 `Remote repository` 
-	- 一般都是 push -f。。 多人协作会有问题
-		git reset --hard HEAD~1            //回滚当前分支某个提交 
-		git push master -f                 //因为落后远程库一个版本需要强制提交		               
+	- 一般都是 push -f。。 多人协作会有问题  
+		git reset --hard HEAD~1            //回滚当前分支某个提交   
+		git push master -f                 //因为落后远程库一个版本需要强制提交		     
 	- 多人协同时，比较安全的是revert，本质上会产生一次额外的提交，进而回滚某次提交
 
 
