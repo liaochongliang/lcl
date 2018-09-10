@@ -1,8 +1,6 @@
-﻿![image](./Docs/Git/Image1.png)
-![image](./Docs/Git/Image2.jpg)
-记录一些常用的GIT命令先来2个网上找的原理图，方便理解。  
+﻿记录一些常用的GIT命令先来2个网上找的原理图，方便理解。  
 本质上GIT是多颗树  
->`workspace` <b/> 一个是本地工作区  
+>`workspace` 			一个是本地工作区  
 `index`					一个是本地暂存区，也就是我们add但是还未commit的  
 `Local repository`		一个是本地历史提交记录仓库。涵盖了我们在本地的所有提交  
 `Remote repository`		最后一个就是，远端的代码仓库区
@@ -10,7 +8,8 @@
 # 一些参考链接
 >https://backlog.com/git-tutorial/cn/stepup/stepup7_1.html
 http://www.ruanyifeng.com/blog/2014/06/git_remote.html  
-https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86
+[Git-工具-重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86)
+
 
 # 基本的操作
 - vim操作
@@ -95,3 +94,9 @@ https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%A
 - 修改本地最近一条commit记录  
 	>git commit --amend  即可  
 
+
+
+
+---
+![image](./Docs/Git/Image1.png)
+![image](./Docs/Git/Image2.jpg)
