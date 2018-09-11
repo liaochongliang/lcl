@@ -7,7 +7,7 @@
 
 ## 1.阅读v8 chrome nodejs相关文章，对v8js引擎有个基本认知
 
->参考文章代表性的有
+>参考文章代表性的有:  
 [V8概念以及编程入门](https://zhuanlan.zhihu.com/p/35371048)  
 [Javascript是如何工作的：V8引擎的内核Ignition和TurboFan](https://v8project.blogspot.com/2017/05/launching-ignition-and-turbofan.html)  
 [中文版](https://juejin.im/post/5aaa89c36fb9a028e25d4a85)  
@@ -20,7 +20,7 @@
 
 
 ### V8绑定的设计
->https://chromium.googlesource.com/chromium/src/+/lkcr/third_party/WebKit/Source/bindings/core/v8/V8BindingDesign.md  
+>[V8Doc-bindingdesign](https://chromium.googlesource.com/chromium/src/+/lkcr/third_party/WebKit/Source/bindings/core/v8/V8BindingDesign.md)  
 `Todo::中文翻译`  
 
 
@@ -66,7 +66,9 @@ https://v8project.blogspot.com/2015/07/digging-into-turbofan-jit.html
 
 ---
 # v8 安装和编译  windows+mac
-因为习惯了在windows调试，所以2个平台都搞了一遍。最强的IDE还是VS2017 mac上用vscode也很不错。`Todo` 后面补一下详细的环境搭建步骤
+因为习惯了在windows调试，所以2个平台都搞了一遍。
+最强的IDE还是VS2017 mac上用vscode也很不错。    
+`Todo` 后面补一下详细的环境搭建步骤
 
 ---
 # v8基本概念介绍 
