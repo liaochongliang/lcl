@@ -1,6 +1,6 @@
 ﻿
 ![image](./Docs/Git/Image1.png)
-![image](./Docs/Git/Image2.jpg)
+![image](./Docs/Git/Image2.jpg)  
 记录一些常用的GIT命令先来2个网上找的原理图，方便理解。  
 本质上GIT是多颗树  
 `workspace` 			一个是本地工作区  
