@@ -13,6 +13,13 @@
 http://www.ruanyifeng.com/blog/2014/06/git_remote.html  
 [Git-工具-重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86)
 
+# 标准流程
+```
+git fetch
+git checkout //查看差异情况
+git diff mater origin/master  //查看细节差异
+git  merge origin/master  //merge到本地
+```
 
 # 基本的操作
 - vim操作
