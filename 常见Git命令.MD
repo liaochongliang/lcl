@@ -15,6 +15,9 @@ http://www.ruanyifeng.com/blog/2014/06/git_remote.html
 
 # 标准流程
 ```
+git log --graph --oneline
+git log --pretty=oneline
+git log --oneline
 git fetch
 git checkout //查看差异情况
 git diff mater origin/master  //查看细节差异
