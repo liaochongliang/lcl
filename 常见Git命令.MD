@@ -15,13 +15,15 @@ http://www.ruanyifeng.com/blog/2014/06/git_remote.html
 
 # 标准流程
 ```
+git status			//查看未提交到本地仓库的文件
+git checkout			//查看和原创仓库的差异情况
 git log --graph --oneline
 git log --pretty=oneline
 git log --oneline
 git fetch
-git checkout //查看差异情况
-git diff mater origin/master  //查看细节差异
-git  merge origin/master  //merge到本地
+git checkout 			//查看差异情况
+git diff mater origin/master  	//查看细节差异
+git  merge origin/master  	//merge到本地
 ```
 
 # 基本的操作
