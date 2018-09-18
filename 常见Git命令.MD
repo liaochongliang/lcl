@@ -122,6 +122,7 @@ git  merge origin/master  	//merge到本地
 	git config --global i18n.commit.encoding utf-8   
 	git config --global i18n.logoutputencoding gbk   
 	export LESSCHARSET=utf-8 //导入到windows环境变量  
+	//最后一条命令是因为 git log 默认使用 less 分页，所以需要 bash 对 less 命令进行 utf-8 编码
 - 其他
 	>另外https://github.com/liaochongliang/lcl/tree/master/Tools/git 是一个绿色版本的GIT  
 	可以可视化操作GIT，查看历史记录，还有对应的命令行  
