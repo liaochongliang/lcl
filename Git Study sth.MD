@@ -33,7 +33,8 @@ git  merge origin/master  	//merge到本地
 	```
 - 查看远程仓库地址
  	```shell
- 	 git remote -v
+ 	 git remote -v  
+	 git remote show origin
 	```
 	
 - 创建并切换分支
@@ -111,8 +112,9 @@ git  merge origin/master  	//merge到本地
 	git rebase --continue      
 
 - 修改本地最近一条commit记录  
-	>git commit --amend  即可   
-	
+	>git commit --amend  即可  
+	git reset HEAD@{1} //回滚错误的修改  
+	git reflog 	   //查看历史
 # windows cmd 显示中文问题  
 - 设置操作
 	>\*\\depot_tools\\win_tools-2_7_6_bin\\git （本GIT中 Tools\\git） 中打开git-bash.exe 
