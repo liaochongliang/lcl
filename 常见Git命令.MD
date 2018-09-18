@@ -31,7 +31,11 @@ git  merge origin/master  	//merge到本地
 	```shell
 	ESC: wq!
 	```
-
+- 查看远程仓库地址
+ 	```shell
+ 	 git remote -v
+	```
+	
 - 创建并切换分支
 	```shell
 	git branch -b  newbxxx oldxxx
@@ -107,9 +111,15 @@ git  merge origin/master  	//merge到本地
 	git rebase --continue      
 
 - 修改本地最近一条commit记录  
-	>git commit --amend  即可  
-
-
-
-
+	>git commit --amend  即可   
+	
+# windows cmd 显示中文问题  
+	>*\depot_tools\win_tools-2_7_6_bin\git （本GIT中 Tools\git） 中打开git-bash.exe 右键属性
+	Text → locale设置为zh_CN  Character set 设置为 UTF-8
+	git config --global core.quotepath false 
+	git config --global gui.encoding utf-8
+	git config --global i18n.commit.encoding utf-8 
+	git config --global i18n.logoutputencoding gbk 
+	export LESSCHARSET=utf-8 //导入到windows环境变量
+	另外https://github.com/liaochongliang/lcl/tree/master/Tools/git 是一个绿色版本的GIT 里面有可视化的看log以及看差异
 ---
