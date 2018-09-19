@@ -63,6 +63,9 @@ https://v8project.blogspot.com/2015/07/digging-into-turbofan-jit.html
 ### 4.后续可以继续关注，v8的性能打点和基准测试，进行一些试验对比
 >最好是能进行一些裁剪，这样就碉堡了。足够了解后。
 
+# webAssembly
+https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/
+
 
 ---
 # v8 安装和编译  windows+mac
