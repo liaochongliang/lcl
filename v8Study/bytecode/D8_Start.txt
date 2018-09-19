@@ -1,0 +1,1 @@
+--print-bytecode --print-ast --print-builtin-scopes --print-scopes --print-code --print-all-code
