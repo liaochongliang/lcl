@@ -1,0 +1,1 @@
+d8.exe --print-bytecode
