@@ -79,7 +79,7 @@ git  merge origin/master  	//merge到本地
 	git merge issue2  
 	git checkout issue3  
 	git rebase master  
-	git add myfile.txt  
+	git add myfile.txt  //修改冲突后手动add
 	git rebase —continue (—abort)  
 	注意这里可以加上merge的时候可以加上一个 --no--ff [参考链接](https://nvie.com/posts/a-successful-git-branching-model/) 
 
@@ -115,6 +115,37 @@ git  merge origin/master  	//merge到本地
 	>git commit --amend  即可  
 	git reset HEAD@{1} //回滚错误的修改  
 	git reflog 	   //查看历史
+# svn  GIT 互相转换
+- svn 转到 GIT管理，不想丢失之前的commit记录
+	>通过 git svn clone urlxxx 
+	//新建分支，用GIT开发  
+	git checkout -b dev   
+	
+	>//只保留一次提交到SVn  
+	git checkout master  
+	git svn rebase  
+	git merge dev  
+	git svn dcommit  
+	
+	>//保留dev的提交记录  
+	git checkout master  
+	git merge dev  
+	git svn rebase  
+	git svn dcommit  
+	
+- 本地SVN地址转到GIT
+	>1.创建SVN本地库(安装SVN Setup-Subversion-1.6.16.msi)，GUI右键操作 or命令行 avnadmin create SvnLoaclBase    
+	2.取得地址 file:///F:\Carry_Blog\SvnLoaclBase 此地址链接我们是可以直接用svn工具进行checkout的，这样相当于吧svn服务器放到本地    
+	3.如果我们想把SVN的历史提交记录，都放到git上    
+	4.切换到一个空的文件夹，git svn init  svn://localhost\F:\Carry_Blog\SvnLoaclBase 然后执行 git svn fetch  
+	4.等价于 git svn clone   
+	5.注意这个svn:://localhost协议，默认不会开启。 需要我们临时手动运行下 svnserve.exe -daemon  
+	6.后续可以在GIT上正常修改，当GIT修改要同步到SVN时，需要调用 git svn dcommit就可以把git的修改记录，都提交到SVN了  
+	7.注意这里可能会出错，需要修改F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 增加 anon-access = write  
+	8.当SVN有改动时，git svn fetch 即可 手动fetch后，需要merge到master。简单点的做法是开发在dev线上，然后切换到master，执行git svn rebase。然后在把dev的改动merge到master。然后在用git svn dcommit。
+	9.git svn commit -username xxx
+	
+	
 # windows cmd 显示中文问题  
 - 设置操作
 	>\*\\depot_tools\\win_tools-2_7_6_bin\\git （本GIT中 Tools\\git） 中打开git-bash.exe 
