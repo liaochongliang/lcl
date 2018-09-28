@@ -139,11 +139,13 @@ git  merge origin/master  	//merge到本地
 	3.如果我们想把SVN的历史提交记录，都放到git上    
 	4.切换到一个空的文件夹，git svn init  svn://localhost\F:\Carry_Blog\SvnLoaclBase 然后执行 git svn fetch  
 	4.等价于 git svn clone   
-	5.注意这个svn:://localhost协议，默认不会开启。 需要我们临时手动运行下 svnserve.exe -daemon  
+	5.注意这个svn:://localhost协议，默认不会开启。 需要我们临时手动运行下 svnserve.exe --daemon  
 	6.后续可以在GIT上正常修改，当GIT修改要同步到SVN时，需要调用 git svn dcommit就可以把git的修改记录，都提交到SVN了  
 	7.注意这里可能会出错，需要修改F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 增加 anon-access = write  
 	8.当SVN有改动时，git svn fetch 即可 手动fetch后，需要merge到master。简单点的做法是开发在dev线上，然后切换到master，执行git svn rebase。然后在把dev的改动merge到master。然后在用git svn dcommit。
-	9.git svn commit -username xxx
+	9.git commit --amend --author="Gitcarry<liaochongliang@gmail.com>"  //git svn 方式创建的GIT 总是不识别username
+	10.提交到本地时,F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 按前面7的设置，会导致 git svn dcommit 提交到SVN时，显示都是无name的所以。这里需要设置为SVN仓库是匿名不可写，然后在passwd中加上Gitcarry = 123456
+	
 	
 	
 # windows cmd 显示中文问题  
