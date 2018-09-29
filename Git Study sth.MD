@@ -11,8 +11,9 @@
 # 一些参考链接
 >https://backlog.com/git-tutorial/cn/stepup/stepup7_1.html  
 http://www.ruanyifeng.com/blog/2014/06/git_remote.html  
-[Git-工具-重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86)
-
+[Git-工具-重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86)  
+[Git-Replace](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E6%9B%BF%E6%8D%A2)
+[git简单命令](https://blog.csdn.net/zhangskd/article/details/8950939)
 # 标准流程
 ```
 git status			//查看未提交到本地仓库的文件
@@ -145,6 +146,21 @@ git  merge origin/master  	//merge到本地
 	8.当SVN有改动时，git svn fetch 即可 手动fetch后，需要merge到master。简单点的做法是开发在dev线上，然后切换到master，执行git svn rebase。如果Git有改动，需要把dev的改动merge到master。然后用git svn dcommit提交到SVN的服务器。注意首次需要加上name git svn dcommit –-username Gitcarry   
 	9.git commit --amend --author="Gitcarry<liaochongliang@gmail.com>"  //git svn 方式创建的GIT 总是不识别username    
 	10.提交到本地时,F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 按前面7的设置，会导致 git svn dcommit 提交到SVN时，显示都是无name的所以。这里需要设置为SVN仓库是匿名不可写，然后在passwd中加上Gitcarry = 123456
+	
+- GIT转SVN
+	>1.首先我们有一个GIT的远程仓库，拉取到本地现在我们想把远程的GIT仓库和一个本地的SVN库，关联起来  
+	2.首先和上面一样，也需要创建一个SVN的本地仓库 获得地址 svn://localhost\F:\Git_Test\SvnLoaclBase   
+	3.在本地拉取远端的git仓库  git clone https://github.com/liaochongliang/windows_tools  
+	4.接着运行 git svn init svn://localhost\F:\Git_Test\SvnLoaclBase  
+	5.拉取SVN的代码 git svn fetch
+	6.此时git branch -avv 可以看到 我们有2个远程地址，一个是GIT的 一个是SVN的，而且这2个分支没有关联起来，所以不能merge等各种操作。
+	6.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。这样就可以remote/git-svn remoter/master 之前各种merge 各种dcommit，只要建立了映射就很简单了。这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。 当然用https://github.com/liaochongliang/lcl/tree/master/Tools/git 这个里面的\cmd\gitk.exe cmd\git-gui.exe 也是很清晰的。   
+	7.到现在为止，我们的GIT有SVN本地仓库，也有远端的库。  
+	当我们修改GIT时，可以merge的remotes/git-svn,然后git svn dcommit.  
+	当我们修改SVN时，可以svn fetch,然后git merge.  
+	这里要注意维护线的问题，就是前面有讲的，如果让提交历史更好看。git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。  
+	所以需要遵守，以下规范  
+	
 	
 	
 	
