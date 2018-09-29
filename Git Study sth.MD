@@ -171,13 +171,13 @@ git  merge origin/master  	//merge到本地
 	
 	- git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。这样就可以remote/git-svn remoter/master 之前各种merge 各种dcommit，只要建立了映射就很简单了。这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。 当然用https://github.com/liaochongliang/lcl/tree/master/Tools/git 这个里面的\cmd\gitk.exe cmd\git-gui.exe 也是很清晰的。   
 	  
-	- 到现在为止，我们的GIT有SVN本地仓库，也有远端的库。  
-	当我们修改GIT时，可以merge的remotes/git-svn,然后git svn dcommit.  
-	当我们修改SVN时，可以svn fetch,然后git merge.  
-	这里要注意维护线的问题，就是前面有讲的，如果让提交历史更好看。git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。  
-	所以需要遵守，以下规范  
-	合入SVN修改(master) git rebase remotes/git-svn  解决冲突 然后 git rebase remotes/orign/master
-	合入GIT修改(svn) git svn rabase  , git rebase master  解决冲突 然后 git rebase svn	
+	- 到现在为止，我们的GIT有SVN本地仓库，也有远端的库。    
+	当我们修改GIT时，可以merge的remotes/git-svn,然后git svn dcommit.    
+	当我们修改SVN时，可以svn fetch,然后git merge.    
+	这里要注意维护线的问题，就是前面有讲的，如果让提交历史更好看。git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。    
+	所以需要遵守，以下规范    
+	合入SVN修改(master) git rebase remotes/git-svn  解决冲突 然后 git rebase remotes/orign/master  
+	合入GIT修改(svn) git svn rabase  , git rebase master  解决冲突 然后 git rebase svn  	
 	
 	
 	
