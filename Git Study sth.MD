@@ -179,7 +179,8 @@ git  merge origin/master  	//merge到本地
 	合入SVN修改(master) git rebase remotes/git-svn  解决冲突 然后 git rebase remotes/orign/master  
 	合入GIT修改(svn) git svn rabase  , git rebase master  解决冲突 然后 git rebase svn  	
 	也就是说SVN 和 remotes/git-svn 一直处于线性关系， master 和 remotes/orign/master 一直处于线性关系。 这样就不会混。每次同步后git diff确认下。
-	![image](./Tools\GitStudy/Svn+GIT .png)
+	![image](./Tools/GitStudy/Svn+GIT .png)
+
 	
 	
 	
