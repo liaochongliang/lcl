@@ -177,7 +177,7 @@ git  merge origin/master  	//merge到本地
 	这里要注意维护线的问题，就是前面有讲的，如果让提交历史更好看。git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。    
 	所以需要遵守，以下规范    
 	合入SVN修改(master) git rebase remotes/git-svn  解决冲突 然后 git rebase remotes/orign/master  
-	合入GIT修改(svn) git svn rabase  , git rebase master  解决冲突 然后 git rebase svn  	
+	合入GIT修改(svn) git svn rabase  , git rebase master  解决冲突 然后 git remotes/git-svn 	
 	也就是说SVN 和 remotes/git-svn 一直处于线性关系， master 和 remotes/orign/master 一直处于线性关系。 这样就不会混。每次同步后git diff确认下。
 	![image](./Tools/GitStudy/Svn%2BGIT%20.png)
 
