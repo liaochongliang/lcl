@@ -135,42 +135,42 @@ git  merge origin/master  	//merge到本地
 	git svn dcommit  
 	
 - 本地SVN地址转到GIT
-	>1.创建SVN本地库(安装SVN Setup-Subversion-1.6.16.msi)，GUI右键操作 or命令行 avnadmin create SvnLoaclBase    
+	- 1.创建SVN本地库(安装SVN Setup-Subversion-1.6.16.msi)，GUI右键操作 or命令行 avnadmin create SvnLoaclBase    
 	
-	2.取得地址 file:///F:\Carry_Blog\SvnLoaclBase 此地址链接我们是可以直接用svn工具进行checkout的，这样相当于吧svn服务器放到本地    
+	- 2.取得地址 file:///F:\Carry_Blog\SvnLoaclBase 此地址链接我们是可以直接用svn工具进行checkout的，这样相当于吧svn服务器放到本地    
 	
-	3.如果我们想把SVN的历史提交记录，都放到git上    
+	- 3.如果我们想把SVN的历史提交记录，都放到git上    
 	
-	4.切换到一个空的文件夹，git svn init  svn://localhost\F:\Carry_Blog\SvnLoaclBase 然后执行 git svn fetch  
+	- 4.切换到一个空的文件夹，git svn init  svn://localhost\F:\Carry_Blog\SvnLoaclBase 然后执行 git svn fetch  
 	
-	4.等价于 git svn clone   
+	- 4.等价于 git svn clone   
 	
-	5.注意这个svn:://localhost协议，默认不会开启。 需要我们临时手动运行下 svnserve.exe --daemon  
+	- 5.注意这个svn:://localhost协议，默认不会开启。 需要我们临时手动运行下 svnserve.exe --daemon  
 	
-	6.后续可以在GIT上正常修改，当GIT修改要同步到SVN时，需要调用 git svn dcommit就可以把git的修改记录，都提交到SVN了  
+	- 6.后续可以在GIT上正常修改，当GIT修改要同步到SVN时，需要调用 git svn dcommit就可以把git的修改记录，都提交到SVN了  
 	
-	7.注意这里可能会出错，需要修改F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 增加 anon-access = write  
+	- 7.注意这里可能会出错，需要修改F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 增加 anon-access = write  
 	
-	8.当SVN有改动时，git svn fetch 即可 手动fetch后，需要merge到master。简单点的做法是开发在dev线上，然后切换到master，执行git svn rebase。如果Git有改动，需要把dev的改动merge到master。然后用git svn dcommit提交到SVN的服务器。注意首次需要加上name git svn dcommit –-username Gitcarry   
-	9.git commit --amend --author="Gitcarry<liaochongliang@gmail.com>"  //git svn 方式创建的GIT 总是不识别username    
-	10.提交到本地时,F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 按前面7的设置，会导致 git svn dcommit 提交到SVN时，显示都是无name的所以。这里需要设置为SVN仓库是匿名不可写，然后在passwd中加上Gitcarry = 123456
+	- 8.当SVN有改动时，git svn fetch 即可 手动fetch后，需要merge到master。简单点的做法是开发在dev线上，然后切换到master，执行git svn rebase。如果Git有改动，需要把dev的改动merge到master。然后用git svn dcommit提交到SVN的服务器。注意首次需要加上name git svn dcommit –-username Gitcarry   
+	- 9.git commit --amend --author="Gitcarry<liaochongliang@gmail.com>"  //git svn 方式创建的GIT 总是不识别username    
+	- 10.提交到本地时,F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 按前面7的设置，会导致 git svn dcommit 提交到SVN时，显示都是无name的所以。这里需要设置为SVN仓库是匿名不可写，然后在passwd中加上Gitcarry = 123456
 	
 - GIT转SVN
-	>1.首先我们有一个GIT的远程仓库，拉取到本地现在我们想把远程的GIT仓库和一个本地的SVN库，关联起来  
+	- 1.首先我们有一个GIT的远程仓库，拉取到本地现在我们想把远程的GIT仓库和一个本地的SVN库，关联起来  
 	
-	2.首先和上面一样，也需要创建一个SVN的本地仓库 获得地址 svn://localhost\F:\Git_Test\SvnLoaclBase   
+	- 2.首先和上面一样，也需要创建一个SVN的本地仓库 获得地址 svn://localhost\F:\Git_Test\SvnLoaclBase   
 	
-	3.在本地拉取远端的git仓库  git clone https://github.com/liaochongliang/windows_tools  
+	- 3.在本地拉取远端的git仓库  git clone https://github.com/liaochongliang/windows_tools  
 	
-	4.接着运行 git svn init svn://localhost\F:\Git_Test\SvnLoaclBase  
+	- 4.接着运行 git svn init svn://localhost\F:\Git_Test\SvnLoaclBase  
 	
-	5.拉取SVN的代码 git svn fetch  
+	- 5.拉取SVN的代码 git svn fetch  
 	
-	6.此时git branch -avv 可以看到 我们有2个远程地址，一个是GIT的 一个是SVN的，而且这2个分支没有关联起来，所以不能merge等各种操作。  
+	- 6.此时git branch -avv 可以看到 我们有2个远程地址，一个是GIT的 一个是SVN的，而且这2个分支没有关联起来，所以不能merge等各种操作。  
 	
-	7.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。这样就可以remote/git-svn remoter/master 之前各种merge 各种dcommit，只要建立了映射就很简单了。这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。 当然用https://github.com/liaochongliang/lcl/tree/master/Tools/git 这个里面的\cmd\gitk.exe cmd\git-gui.exe 也是很清晰的。   
+	- 7.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。这样就可以remote/git-svn remoter/master 之前各种merge 各种dcommit，只要建立了映射就很简单了。这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。 当然用https://github.com/liaochongliang/lcl/tree/master/Tools/git 这个里面的\cmd\gitk.exe cmd\git-gui.exe 也是很清晰的。   
 	  
-	8.到现在为止，我们的GIT有SVN本地仓库，也有远端的库。  
+	- 8.到现在为止，我们的GIT有SVN本地仓库，也有远端的库。  
 	当我们修改GIT时，可以merge的remotes/git-svn,然后git svn dcommit.  
 	当我们修改SVN时，可以svn fetch,然后git merge.  
 	这里要注意维护线的问题，就是前面有讲的，如果让提交历史更好看。git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。  
