@@ -12,8 +12,9 @@
 >https://backlog.com/git-tutorial/cn/stepup/stepup7_1.html  
 http://www.ruanyifeng.com/blog/2014/06/git_remote.html  
 [Git-工具-重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86)  
-[Git-Replace](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E6%9B%BF%E6%8D%A2)
-[git简单命令](https://blog.csdn.net/zhangskd/article/details/8950939)
+[Git-Replace](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E6%9B%BF%E6%8D%A2)  
+[git简单命令](https://blog.csdn.net/zhangskd/article/details/8950939)  
+[1 Git 与其他系统 - Git 与 Subversion](https://git-scm.com/book/zh/v1/Git-%E4%B8%8E%E5%85%B6%E4%BB%96%E7%B3%BB%E7%BB%9F-Git-%E4%B8%8E-Subversion)
 # 标准流程
 ```
 git status			//查看未提交到本地仓库的文件
