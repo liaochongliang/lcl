@@ -154,9 +154,9 @@ git  merge origin/master  	//merge到本地
     
 # GIT转SVN
 1.首先我们有一个GIT的远程仓库，拉取到本地现在我们想把远程的GIT仓库和一个本地的SVN库，关联起来  
-2.首先和上面一样，也需要创建一个SVN的本地仓库 获得地址 svn://localhost\F:\Git_Test\SvnLoaclBase  
+2.首先和上面一样，也需要创建一个SVN的本地仓库 获得地址 svn://localhost\F:\Git_Test\SvnLocalBase
 3.在本地拉取远端的git仓库  git clone https://github.com/liaochongliang/windows_tools  
-4.接着运行 git svn init -s svn://localhost\F:\Git_Test\SvnLoaclBase  
+4.接着运行 git svn init -s svn://localhost/F:/Git_Test/SvnLocalBase/  
 5.拉取SVN的代码 git svn fetch  
 6.此时git branch -avv 可以看到 我们有2个远程地址，一个是GIT的 一个是SVN的，而且这2个分支没有关联起来，所以不能merge等各种操作。  
 7.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。  
