@@ -35,8 +35,8 @@ git  merge origin/master  	//merge到本地
     ```
 - 查看远程仓库地址
      ```shell
-      git remote -v  
-     git remote show origin
+    git remote -v  
+    git remote show origin
     ```
     
 - 创建并切换分支
@@ -64,7 +64,7 @@ git  merge origin/master  	//merge到本地
 
 - 回滚当前分支所有修改`修改workspace`  
     - git reset --hard HEAD  //会删除本地的修改  
-    - 如果只是需要回归 add commit不用使用hard。
+    - 如果只是需要回滚 add commit不用使用--hard。
 
 - 注意如果需要修改 `Remote repository` 
     - 一般都是 push -f。。 多人协作会有问题  
