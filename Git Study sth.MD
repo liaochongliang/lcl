@@ -159,8 +159,12 @@ git  merge origin/master  	//merge到本地
 4.接着运行 git svn init -s svn://localhost\F:\Git_Test\SvnLoaclBase  
 5.拉取SVN的代码 git svn fetch  
 6.此时git branch -avv 可以看到 我们有2个远程地址，一个是GIT的 一个是SVN的，而且这2个分支没有关联起来，所以不能merge等各种操作。  
-7.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。这样就可以remote/git-svn remoter/master 之间各种merge 各种dcommit，只要建立了映射就很简单了。这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。 当然用https://github.com/liaochongliang/lcl/tree/master/Tools/git 这个里面的\cmd\gitk.exe \cmd\git-gui.exe 也是很清晰的。  
-![image](./Tools/GitStudy/1.强制链接SVN和GIT提交记录.png)
+7.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。  
+这样就可以remote/git-svn remoter/master 之间各种merge 各种dcommit，只要建立了映射就很简单了。  
+这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。  
+为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。  
+当然用https://github.com/liaochongliang/lcl/tree/master/Tools/git 这个里面的\cmd\gitk.exe \cmd\git-gui.exe 也是很清晰的。    
+![image](./Tools/GitStudy/1.强制链接SVN和GIT提交记录.png)  
 8.到现在为止，我们的GIT有SVN本地仓库，也有远端的库。    
 9.当我们修改GIT时，可以merge 到 remotes/git-svn,然后git svn dcommit.    
 10.当我们修改SVN时，可以svn fetch,然后git merge 到对应的线.    
