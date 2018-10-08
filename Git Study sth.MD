@@ -156,21 +156,49 @@ git  merge origin/master  	//merge到本地
 1.首先我们有一个GIT的远程仓库，拉取到本地现在我们想把远程的GIT仓库和一个本地的SVN库，关联起来  
 2.首先和上面一样，也需要创建一个SVN的本地仓库 获得地址 svn://localhost\F:\Git_Test\SvnLoaclBase  
 3.在本地拉取远端的git仓库  git clone https://github.com/liaochongliang/windows_tools  
-4.接着运行 git svn init svn://localhost\F:\Git_Test\SvnLoaclBase  
+4.接着运行 git svn init -s svn://localhost\F:\Git_Test\SvnLoaclBase  
 5.拉取SVN的代码 git svn fetch  
 6.此时git branch -avv 可以看到 我们有2个远程地址，一个是GIT的 一个是SVN的，而且这2个分支没有关联起来，所以不能merge等各种操作。  
-7.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。这样就可以remote/git-svn remoter/master 之间各种merge 各种dcommit，只要建立了映射就很简单了。这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。 当然用https://github.com/liaochongliang/lcl/tree/master/Tools/git 这个里面的\cmd\gitk.exe cmd\git-gui.exe 也是很清晰的。  
+7.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。这样就可以remote/git-svn remoter/master 之间各种merge 各种dcommit，只要建立了映射就很简单了。这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。 当然用https://github.com/liaochongliang/lcl/tree/master/Tools/git 这个里面的\cmd\gitk.exe \cmd\git-gui.exe 也是很清晰的。  
+![image](./Tools/GitStudy/1.强制链接SVN和GIT提交记录.png)
 8.到现在为止，我们的GIT有SVN本地仓库，也有远端的库。    
-9.当我们修改GIT时，可以merge的remotes/git-svn,然后git svn dcommit.    
-10.当我们修改SVN时，可以svn fetch,然后git merge.    
-11.这里要注意维护线的问题，就是前面有讲的，如果让提交历史更好看。  git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。        
-
->所以需要遵守，以下规范    
+9.当我们修改GIT时，可以merge 到 remotes/git-svn,然后git svn dcommit.    
+10.当我们修改SVN时，可以svn fetch,然后git merge 到对应的线.    
+11.这里要注意维护提交记录的问题，就是前面有讲的，如何让提交历史更好看。注意：git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。 
+```
+所以需要遵守，以下规范  :
 合入SVN修改(master) git rebase remotes/git-svn  解决冲突 然后 git rebase remotes/orign/master  
 合入GIT修改(svn) git svn rabase  , git rebase master  解决冲突 然后 git remotes/git-svn   
 也就是说SVN 和 remotes/git-svn 一直处于线性关系， master 和 remotes/orign/master 一直处于线性关系。  
-这样就不会混。每次同步后git diff确认下。
+这样就不会混。每次同步前后git diff确认下。
+```
+12.如何把修改，提交到SVN分支  (这个问题等价于,把GIT本地修改，提交到GIT svn命令自动生成的远端分支)  
+假设SVN有分支remotes/origin/svn-B1  
+本地有分支dev1 (remotes/origin/svn-B1)  
+把本地修改推送到远端SVN,需要使用rebase  
+git rebase remotes/origin/svn-B1 然后在 git svn dcommit  
+向SVN提交时，会改变hash值，所以，如果有改动要同步，一定是先提交给SVN，在提交给GIT。  
+注意SVN中删除一个分支，实际上不会影响文件。但是GIT删除会影响。  
+删除无效的SVN远端分支  git branch -D -r remoter/origin/svn-B1  
+删除文件 F:\Git_Test\windows_tools\.git\svn\refs\remotes\origin\svn-B1  
+
+13.怎么重命名这个svn的分支？   
+修改 .git\config如下，删除.git里面其他地方的文件即可  
+[svn-remote "svn"]  
+	url = svn://localhost/f:/git_test/windows_tools_svnlocalbase/  
+	fetch = `trunk`:refs/remotes/`svn-trunk-xx`  
+
+```
+git clone https://github.com/liaochongliang/windows_tools
+cd windows_tools
+git svn init -s svn://localhost/F:\Git_Test\windows_tools_SvnLocalBase
+git svn fetch
+echo 4fc9ddd1bea6c86480d9d64821149a51237c2956 61fffa86bb8bd94e5dcc28b5cf296b2a3cf8590a >>.git/info/grafts
+git replace --convert-graft-file
+```
 ![image](./Tools/GitStudy/Svn%2BGIT%20.png)
+
+
 
 
     
