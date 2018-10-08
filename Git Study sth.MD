@@ -144,8 +144,8 @@ git  merge origin/master  	//merge到本地
 4.后续可以在GIT上正常修改，当GIT修改要同步到SVN时，需要调用 git svn dcommit就可以把git的修改记录，都提交到SVN了  
 5.注意这里可能会出错，需要修改 F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 增加 anon-access = write  
 6.当SVN有改动时，git svn fetch 即可 手动fetch后，需要merge到master。简单点的做法是开发在dev线上，然后切换到master，执行git svn rebase。如果Git有改动，需要把dev的改动merge到master。然后用git svn dcommit提交到SVN的服务器。注意首次需要加上name git svn dcommit –-username Gitcarry    
-7.git commit --amend --author="Gitcarry<liaochongliang@gmail.com>"  //git svn 方式创建的GIT 总是不识别username      
-8.提交到本地时,F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 按前面7的设置，会导致 git svn dcommit 提交到SVN时，显示都是无name的所以。这里需要设置为SVN仓库是匿名不可写，然后在passwd中加上Gitcarry = 123456  设置文件在 Tools\GitStudy\Svn_Begain.zip 中有一份例子
+7.git commit --amend --author="Gitcarry\<liaochongliang@gmail.com\>"  //git svn 方式创建的GIT 总是不识别username      
+8.提交到本地时,F:\Carry_Blog\SvnLoaclBase\conf\svnserve.conf 按前面7的设置，会导致 git svn dcommit 提交到SVN时，显示都是无name的所以。这里需要设置为SVN仓库是匿名不可写，然后在passwd中加上Gitcarry = 123456  设置文件在Tools\GitStudy\Svn_Begain.zip 中有一份例子
     
 # GIT转SVN
 1.首先我们有一个GIT的远程仓库，拉取到本地现在我们想把远程的GIT仓库和一个本地的SVN库，关联起来  
