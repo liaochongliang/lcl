@@ -169,7 +169,12 @@ git  merge origin/master  	//merge到本地
 8.到现在为止，我们的GIT有SVN本地仓库，也有远端的库。    
 9.当我们修改GIT时，可以merge 到 remotes/git-svn,然后git svn dcommit.    
 10.当我们修改SVN时，可以svn fetch,然后git merge 到对应的线.    
-11.这里要注意维护提交记录的问题，就是前面有讲的，如何让提交历史更好看。注意：git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。 
+11.这里要注意维护提交记录的问题，就是前面有讲的，如何让提交历史更好看。注意：git svn dcommit 会修改本地的GIT提交hash值，这个没法优化。   
+![image](./Tools/GitStudy/git提交到SVN前.png)  
+![image](./Tools/GitStudy/git提交到svn后修改1.png)
+![image](./Tools/GitStudy/git提交到svn后修改2.png)  
+可以看到git的提交时间和人员，会被重新生成新的然后提交给svn，此时git diff dev master 是一致的  
+
 ```
 所以需要遵守，以下规范  :
 合入SVN修改(master) git rebase remotes/git-svn  解决冲突 然后 git rebase remotes/orign/master  
