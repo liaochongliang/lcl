@@ -159,7 +159,8 @@ git  merge origin/master  	//merge到本地
 4.接着运行 git svn init -s svn://localhost/F:/Git_Test/SvnLocalBase/  
 5.拉取SVN的代码 git svn fetch  
 6.此时git branch -avv 可以看到 我们有2个远程地址，一个是GIT的 一个是SVN的，而且这2个分支没有关联起来，所以不能merge等各种操作。  
-7.git\info\grafts (系统会提示要我们在运行一次git replace --convert-graft-file)中强行把SVN的提交放到GIT之后，让2个没有任何关系的分支有关联。  
+7.git\info\grafts git第一个提交ID SVN最后一个提交ID (系统会提示要我们在运行一次git replace --convert-graft-file)  
+强制把GIT的提交放到avn之后，让2个没有任何关系的分支有关联。  
 这样就可以remote/git-svn remoter/master 之间各种merge 各种dcommit，只要建立了映射就很简单了。  
 这里可以理解为，我们git仓库有个远端在github上，同时有一个远端是来自svn的URL（只不过我们这里用的本地）。  
 为什么要这么做？主要是SVN查看历史记录和diff，习惯一点。  
