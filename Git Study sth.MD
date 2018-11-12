@@ -73,6 +73,10 @@ git  merge origin/master  	//merge到本地
     - 多人协同时，比较安全的是revert，本质上会产生一次额外的提交，进而回滚某次提交	
 
 
+- 提交远程分支，用于mr
+git push origin  本地分支:远程分支
+git push origin  maste_TTwebview:maste_TTwebview
+
 # 高级操作
 
 - 多个分支merge合入主线，GITlog 记录好看一点  
