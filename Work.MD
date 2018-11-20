@@ -9,6 +9,7 @@
 持续Patch提交时
 git add .
 git rm -r  --cached android_webview/out/out1/
+git cl format
 git commit --amend
 git push origin HEAD:refs/for/v62_develop
 ```
@@ -18,8 +19,20 @@ git push origin HEAD:refs/for/v62_develop
 (down target=android 的代码，运行相关脚本，准备好初始环境)
 liaochong@bytedance:
 cd ~/workpace/chromium/src
+cherry pick
 gn gen  out/dx1
-ninja -C out/dx1
+--ninja -C out/dx1
+./webview_build Dx1
+./run Dx1
+
+//确认下Md5
+拷贝生成的 out/Dx1/apks/webview.apk
+unzip webview.apk -d xxx/
+md5sum  $(find  ./xxx  -name "*.*")
+
+//上传so,修改代码固定ur,build号,上传SDK
+//测试
+
 ```
 
 # mac 《-》 Unbuntu
