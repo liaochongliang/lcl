@@ -33,6 +33,9 @@ md5sum  $(find  ./xxx  -name "*.*")
 //上传so,修改代码固定ur,build号,上传SDK
 //测试
 
+//压缩备份symbol文件
+zip  -r  Dx1.zip ./Dx1
+
 ```
 
 # mac 《-》 Unbuntu
