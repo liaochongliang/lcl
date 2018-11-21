@@ -25,7 +25,7 @@ liaochong@bytedance:
 cd ~/workpace/chromium/src
 cherry pick
 gn gen  out/Dx1
---ninja -C out/Dx1
+# ninja -C out/Dx1  #标志62版本编时使用
 ./webview_build Dx1
 ./run Dx1
 
@@ -35,12 +35,12 @@ unzip webview.apk -d xxx/
 md5sum  $(find  ./xxx  -name "*.*")
 
 //上传so,修改代码固定ur,build号,上传SDK
-//测试
+//测试TT_Lite
 
 //压缩备份symbol文件
 zip  -r  Dx1.zip ./Dx1
 
-//安装apk测试查看日志
+//外发版本 安装apk测试查看日志
 adb install  xx.apk
 ```
 
