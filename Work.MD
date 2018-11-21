@@ -20,14 +20,17 @@ git push origin HEAD:refs/for/v62_develop
 
 # 编译62_Develop 版本
 ```
-(down target=android 的代码，运行相关脚本，准备好初始环境)
+(down target=android 的代码，运行相关脚本，准备好初始环境 src/build/install-build-deps-android.sh 等等 参考chrome官方文档就好)
 liaochong@bytedance:
 cd ~/workpace/chromium/src
 cherry pick
 gn gen  out/Dx1
+
+先编译下demo工程，生成 libwebviewbytedance.so 依赖的java接口文件
+
 # ninja -C out/Dx1  #标志62版本编时使用
-./webview_build Dx1
-./run Dx1
+src  ./webview_build Dx1
+src  ./android_webview/out/run Dx1
 
 //确认下Md5
 拷贝生成的 out/Dx1/apks/webview.apk
