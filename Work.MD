@@ -12,6 +12,11 @@ git rm -r  --cached android_webview/out/out1/
 git cl format
 git commit --amend
 git push origin HEAD:refs/for/v62_develop
+
+确认当前是哪个cherry pick 第几个 patch
+1. 查看 .git/FETCH_HEAD
+2. git diff FETCH_HEAD  本质上就是diff 2个commitid
+3. 查看远端的commitid git ls-remote|grep 739248'
 ```
 
 # 编译62版本
