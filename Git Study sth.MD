@@ -61,6 +61,10 @@ git  merge origin/master  	//merge到本地
     ```shell
     git branch -avv(-vv)
     ```
+- 重命名本地分支
+    ```shell
+    git branch -m old new
+    ```
 
 - 回滚当前分支所有修改`修改workspace`  
     - git reset --hard HEAD  //会删除本地的修改  
