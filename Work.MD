@@ -3,8 +3,7 @@
 首次
 1.先把自己支线提交，merge成一次
 2.基于需要提交对应的线，进行rebase操作
-3.
-
+3.rebase --continue?
 
 持续Patch提交时
 git add .
@@ -19,14 +18,14 @@ git push origin HEAD:refs/for/v62_develop
 3. 查看远端的commitid git ls-remote|grep 739248'
 ```
 
-# 编译62版本
+# 编译62_Develop 版本
 ```
 (down target=android 的代码，运行相关脚本，准备好初始环境)
 liaochong@bytedance:
 cd ~/workpace/chromium/src
 cherry pick
-gn gen  out/dx1
---ninja -C out/dx1
+gn gen  out/Dx1
+--ninja -C out/Dx1
 ./webview_build Dx1
 ./run Dx1
 
@@ -41,6 +40,8 @@ md5sum  $(find  ./xxx  -name "*.*")
 //压缩备份symbol文件
 zip  -r  Dx1.zip ./Dx1
 
+//安装apk测试查看日志
+adb install  xx.apk
 ```
 
 # mac 《-》 Unbuntu
@@ -100,8 +101,6 @@ gdb ./decompress  core
 bt
 info f
 ```
-
-
 
 # Mac安装Python MysqlDb
 ```
