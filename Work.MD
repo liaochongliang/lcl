@@ -5,6 +5,14 @@
 2.基于需要提交对应的线，进行rebase操作
 3.rebase --continue?
 
+打patch
+git diff commitid1 commitid2 >patch_1
+git diff：是查看working tree与index file的差别的。
+git diff --cached：是查看index file与commit的差别的。
+git diff HEAD：是查看working tree和commit的差别的。（你一定没有忘记，HEAD代表的是最近的一次commit的信息）
+git apply --check patch_1
+git apply patch_1
+
 持续Patch提交时
 git add .
 git rm -r  --cached android_webview/out/out1/
