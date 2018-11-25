@@ -1,12 +1,25 @@
 # Commit 标准流程
 ```
+临时保存
+git stash          # save uncommitted changes
+# pull, edit, etc.
+git stash list     # list stashed changes in this git
+git show stash@{0} # see the last stash 
+git stash pop      # apply last stash and remove it from the list
+git stash --help   # for more info
+
 TT_Lite
 git push origin TTwebviewDx1:feature_use_ttwebview2
 
 首次
 1.先把自己支线提交，merge成一次
 2.基于需要提交对应的线，进行rebase操作
-3.rebase --continue?
+git am --show-current-patch
+git add/rm <conflicted_files>
+git rebase --continue
+  git rebase --skip
+  git rebase --abort
+git push origin HEAD:refs/for/v62_develop
 
 打patch
 git diff commitid1 commitid2 >patch_1
