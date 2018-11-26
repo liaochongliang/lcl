@@ -117,6 +117,11 @@ md5sum  $(find  ./WebViewDir  -name "*.*")
 cmake -DCMAKE_BUILD_TYPE=Debug ../
 cmake -DCMAKE_BUILD_TYPE=Release ../
 cmake ../ -G "Xcode"
+cmake -D<xxx>=<xxx>  //注意这个-D
+
+-G <generator-name> 指定makefile生成器的名字
+-D<var>:<type>=<value> 添加变量及值到CMakeCache.txt中
+-U<globbing_expr> 
 ```
 
 # ubuntu调试
