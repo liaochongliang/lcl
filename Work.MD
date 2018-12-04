@@ -152,3 +152,30 @@ sudo install_name_tool -change libmysqlclient.21.dylib /usr/local/mysql/lib/libm
 sudo ln -s  /usr/local/mysql/lib/libssl.1.0.0.dylib   /usr/lib/libssl.1.0.0.dylib
 sudo ln -s  /usr/local/mysql/lib/libcrypto.1.0.0.dylib /usr/lib/libcrypto.1.0.0.dylib
 ```
+
+
+# RSA相关
+```
+OpenSSL支持两种PublicKey格式，
+对应的API是 PEM_read_RSAPublicKey 和 PEM_read_RSA_PUBKEY ，
+其中 RSAPublicKey 使用#PKCS1 RSAPublicKey结构， 
+RSA_PUBKEY 使用 #PKCS1 SubjectPublicKeyInfo结构，两种结构对应的PEM内容不同。
+
+1.使用openssl工具生成Key
+# openssl genrsa -out private.pem 1024
+
+2.生成公钥
+# openssl rsa -in private.pem -inform PEM -outform PEM -pubout -out public.pem
+
+DER 和 PEM 格式
+上面的Key分别以DER和PEM格式保存，
+DER是二进制形式，用ASN.1编码。Java分别用PKCS#8 X509读取PrivateKey和PublicKey的DER文件。 
+PEM是文本形式，是DER形式做base64编码，并加上头尾（如–—BEGIN RSA PRIVATE KEY–—）生成的。
+
+3.DER和PEM格式可以互相转换
+# openssl rsa -in private.der -inform DER -outform PEM -out private.pem
+# openssl rsa -in public.der -inform DER -outform PEM -pubin -out public.pem
+
+# openssl rsa -in private.pem -inform PEM -outform DER -out private.der
+# openssl rsa -in public.pem -inform PEM -outform DER -pubin -out public.der
+```
