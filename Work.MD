@@ -161,20 +161,25 @@ OpenSSL支持两种PublicKey格式，
 其中 RSAPublicKey 使用#PKCS1 RSAPublicKey结构， 
 RSA_PUBKEY 使用 #PKCS1 SubjectPublicKeyInfo结构，两种结构对应的PEM内容不同。
 
-1.使用openssl工具生成Key
+1.生产私钥
 # openssl genrsa -out private.pem 1024
 
-2.生成公钥
-# openssl rsa -in private.pem -inform PEM -outform PEM -pubout -out public.pem
+2.1 生成公钥  no-rsa的
+# openssl rsa -in private.pem -inform PEM -outform PEM -pubout -out NoRsa_public.pem
+
+2.2 生成公钥  rsa的  py里面用的是这个。。。
+#openssl rsa -in pubNoRsa_publiclic.pem -RSAPublicKey_out -out rsa_public.pem
 
 DER 和 PEM 格式
 上面的Key分别以DER和PEM格式保存，
 DER是二进制形式，用ASN.1编码。Java分别用PKCS#8 X509读取PrivateKey和PublicKey的DER文件。 
 PEM是文本形式，是DER形式做base64编码，并加上头尾（如–—BEGIN RSA PRIVATE KEY–—）生成的。
 
-3.DER和PEM格式可以互相转换
+3.DER和PEM格式可以互相转换  
+java生成的是der格式的,转成base64,在python中把base64解码，写入文件生成*.der
+然后再把der转换成dem
 # openssl rsa -in private.der -inform DER -outform PEM -out private.pem
-# openssl rsa -in public.der -inform DER -outform PEM -pubin -out public.pem
+# openssl rsa -in public.der -inform DER -outform PEM -pubin -out public.pem //非Rsa的
 
 # openssl rsa -in private.pem -inform PEM -outform DER -out private.der
 # openssl rsa -in public.pem -inform PEM -outform DER -pubin -out public.der
