@@ -1,4 +1,4 @@
-#减少git代码
+# 减少git代码
 git config core.sparsecheckout true
 .git\info\sparse-checkout
 文件
