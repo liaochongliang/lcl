@@ -1,10 +1,10 @@
 # 减少git代码
-git config core.sparsecheckout true
-.git\info\sparse-checkout
-文件
-/*  
-!/src/third_party/android_tools/ndk/platforms
-关闭时 设置整个文件为一个*,置为false不生效
+git config core.sparsecheckout true  
+.git\info\sparse-checkout  
+文件  
+/*    
+!/src/third_party/android_tools/ndk/platforms  
+关闭时 设置整个文件为一个*,置为false不生效  
 
 # Commit 标准流程
 ```
