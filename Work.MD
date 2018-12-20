@@ -81,6 +81,25 @@ zip  -r  Dx1.zip ./Dx1
 adb install  xx.apk
 ```
 
+# 远程ubuntu机器
+```
+SHH机器-开启远程访问（andriod studio相关环境配置，IDEbuild时gradle会触发依赖下载 ）
+sudo apt-get install vnc4server
+
+在ubuntu的“桌面共享”中设置，勾选“允许其他人查看您的桌面”和“运行其他用户控制您的桌面” 若ubuntu作为不配显示器的服务器使用，去掉勾选“安全-必须为对本机器的每次访问进行确认”
+vnc4passwd
+启动vnc4server
+vnc4server -geometry 1440x900 -depth 16
+vnc连接
+10.94.1.106:5901
+
+ps -u liaochong ; kill PID vnc4
+
+//下载andrio studio bin里面的sh启动
+//andriod studio启动后，打开我们的andriod_webview/demo 编译，触发gradle下载各种依赖
+//修改demo 下 local.properties 添加ndk.dir 执行自己ttwebviwe 的 src/third_party/android_tools/ndk
+```
+
 # mac 《-》 Unbuntu
 ```
 上传run脚本
