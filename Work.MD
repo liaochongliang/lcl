@@ -81,7 +81,7 @@ zip  -r  Dx1.zip ./Dx1
 adb install  xx.apk
 ```
 
-# 远程ubuntu机器
+# 远程ubuntu机器=Vnc
 ```
 SHH机器-开启远程访问（andriod studio相关环境配置，IDEbuild时gradle会触发依赖下载 ）
 sudo apt-get install vnc4server
@@ -91,7 +91,7 @@ vnc4passwd
 启动vnc4server
 vnc4server -geometry 1440x900 -depth 16
 vnc连接
-10.94.1.106:5901
+10.91.4.102:5901
 
 ps -u liaochong ; kill PID vnc4
 
