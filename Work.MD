@@ -91,7 +91,7 @@ vnc4passwd
 启动vnc4server
 vnc4server -geometry 1440x900 -depth 16
 vnc连接
-10.91.4.102:5901
+vnc://10.91.4.102:5901
 
 ps -u liaochong ; kill PID vnc4
 
