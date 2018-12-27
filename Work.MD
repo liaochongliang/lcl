@@ -7,6 +7,21 @@ git config core.sparsecheckout true
 !/src/third_party/android_tools/ndk/platforms  
 关闭时 设置整个文件为一个*,置为false不生效  
 ```
+# Tag相关
+``` 
+git tag |grep xxx  查 
+
+git tag <Tag名字>  默认取当前的线最后的提交 增
+git tag <Tag 名字> <SHA-1 Code>
+git tag -a <Tag名字> -m <注释文字> <SHA-1 Code>
+ 
+git show <Tag 名字>  查看
+git tag -d <Tag 名字>  删除
+
+git push origin <Tag 名字>  推送
+git push origin --tags
+```
+
 # Commit 标准流程
 ```
 临时保存
