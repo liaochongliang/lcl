@@ -71,6 +71,7 @@ git  merge origin/master  	//merge到本地
     git fsck
     git show  commitid
     git stash apply commitid
+    git gc //手动clean
     ```
 
 
