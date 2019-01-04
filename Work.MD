@@ -121,8 +121,7 @@ ps -u liaochong ; kill PID vnc4
 scp -r /Users/liaochongliang/ycodespace/ttwebview/src/android_webview/out/run  liaochong@10.94.1.106:/home/liaochong/workpace/ttwebview/src/android_webview/out
 
 下载
-scp -r liaochong@10.94.1.106:/home/liaochong/apks /Users/liaochongliang/apkTest/x1
-scp -r liaochong@10.94.1.106:/home/liaochong/apks/Dx1  /Users/liaochongliang/apkTest/
+scp -r liaochong@10.91.4.102:/home/liaochong/apks/sdk104  /Users/liaochongliang/apkTest/
 
 在本机shell中 执行 
 scp -r /Users/liaochongliang/xcodespace/decom  liaochong@10.94.1.106:/home/liaochong/workpace
