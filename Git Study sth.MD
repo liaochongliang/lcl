@@ -66,6 +66,14 @@ git  merge origin/master  	//merge到本地
     git branch -m old new
     ```
 
+- stash 误drop时
+    ```shell
+    git fsck
+    git show  commitid
+    git stash apply commitid
+    ```
+
+
 - 回滚当前分支所有修改`修改workspace`  
     - git reset --hard HEAD  //会删除本地的修改  
     - 如果只是需要回滚 add commit不用使用--hard。
