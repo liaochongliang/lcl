@@ -35,6 +35,8 @@ git stash --help   # for more info
 
 TT_Lite
 git push origin TTwebviewDx3:feature_use_ttwebview3
+手动添加追踪
+git branch --set-upstream-to=origin/feature_ttwebview_master_sdk105  feature_ttwebview_master_sdk105
 
 首次
 1.先把自己支线提交，merge成一次
