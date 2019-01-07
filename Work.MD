@@ -228,3 +228,19 @@ java生成的是der格式的,转成base64,在python中把base64解码，写入�
 # openssl rsa -in private.pem -inform PEM -outform DER -out private.der
 # openssl rsa -in public.pem -inform PEM -outform DER -pubin -out public.der
 ```
+
+
+# 新机器拉代码流程
+```
+#sshkey 添加到git网站
+ssh-keygen -t ras -C "xxxx@xxx.com"
+
+~/.ssh/id_rsa是私钥 
+~/.ssh/id_rsa.pub是公钥
+
+cat ~/.ssh/id_rsa/pub
+复制这一长串行 拷贝带网站上
+
+
+
+```
