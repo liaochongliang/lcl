@@ -13,14 +13,14 @@ win10 编译 chrome
   - fsutil.exe file queryCaseSensitiveInfo <path>  
   - fsutil.exe file queryCaseSensitiveInfo  D:\workplace\temp\ttwebview\src\third_party\android_tools\ndk\platforms
 
-- wsl要支持外部ssh登陆
+- wsl要支持外部ssh登陆(可选)
   - sudo vim /etc/ssh/sshd_config
   - 修改端口 去掉密码
   - sudo service ssh --full-restart
   - win10 关闭防火墙，或者是添加对应端口的入站放行规则
 
-- 拉取代码
-  - lxss拉取后 运行runhooks
+- 拉取代码（拉去chrome代码62）
+  - lxss拉取后 运行gclient runhooks
     - code：
     - git config --global http.postBuffer 52428800
     - git config --global --add core.compression -1
