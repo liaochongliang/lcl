@@ -74,6 +74,12 @@ git  merge origin/master  	//merge到本地
     git gc //手动clean
     ```
 
+- 去除缓存中的文件
+一种是 git rm --cached "文件路径"，不删除物理文件，仅将该文件从缓存中删除；
+一种是 git rm --f  "文件路径"，不仅将该文件从缓存中删除，还会将物理文件删除（不会回收到垃圾桶）。
+
+- 手动添加本地分支追踪
+git branch --set-upstream debug origin/debug
 
 - 回滚当前分支所有修改`修改workspace`  
     - git reset --hard HEAD  //会删除本地的修改  
