@@ -152,6 +152,11 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 - sudo lsb_release -a
 - sudo apt update && sudo apt install android-sdk
 
+- git config --global core.ignorecase false
+- git config --global core.filemode false
+- git config --global core.autocrlf false
+ git config --global core.saftcrlf true
+
 - wsl忘记密码 1234qwer
   - C:\%userprofile%\AppData\Local\lxss\rootfs\etc这个目录下面找到'shadow'文件 还有'shadow-‘，用记事本打开’shadow'可以看到所有用户和加密显示的密码
   - 把个人登陆用户名的密码部分删除，然后保存退出
