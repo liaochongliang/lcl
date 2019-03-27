@@ -157,16 +157,20 @@ find .
 
 # 常见系统命令
 ```
+unzip xxx1.zip 
+unzip xxx1.zip -d xxx1 指定目录
+
 md5sum  $(find  ./WebViewDir  -name "*.*")
 ./gradlew assembleDebug
+
 cmake -DCMAKE_BUILD_TYPE=Debug ../
 cmake -DCMAKE_BUILD_TYPE=Release ../
 cmake ../ -G "Xcode"
 cmake -D<xxx>=<xxx>  //注意这个-D
-
 -G <generator-name> 指定makefile生成器的名字
 -D<var>:<type>=<value> 添加变量及值到CMakeCache.txt中
 -U<globbing_expr> 
+
 ```
 
 # ubuntu调试
