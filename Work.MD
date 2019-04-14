@@ -181,6 +181,11 @@ ulimit -c 10240
 gdb ./decompress  core
 bt
 info f
+
+src/third_party/android_tools/ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-addr2line -i -f -C -e  sym/062.108.0004.003/libwebviewbytedance.so 0x1ff795a
+
+src/third_party/android_tools/ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-addr2line -i -f -C -e  src/out/component_T_Debu/lib.unstripped/libwebviewbytedance.so
+
 ```
 
 # Mac安装Python MysqlDb
