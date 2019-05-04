@@ -52,4 +52,5 @@ sort命令是帮我们依据不同的数据类型进行排序，其语法及常�
 # Copy rm删除的文件
 
 ls -l /proc/30888/fd
+
 cp /proc/30888/fd/3 save.img
