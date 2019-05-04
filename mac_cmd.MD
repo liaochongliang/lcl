@@ -1,11 +1,8 @@
 
 # 统计mac 磁盘大小
-du -sh *：包含当前目录文件夹和文件。
-
-du -h -d=1：仅统计文件夹（包括当前目录./)
-
-du -sk * | sort -rn
-
+du -sh *：包含当前目录文件夹和文件。  
+du -h -d=1：仅统计文件夹（包括当前目录./)  
+du -sk * | sort -rn  
 所以，结论：可根据精度需要，du指令选择-mor-k参数。sort指令选择-n和-r对数值排序，并倒序显示—du -sk * | sort -rn
 
 ```
@@ -53,6 +50,5 @@ sort命令是帮我们依据不同的数据类型进行排序，其语法及常�
 
 # Copy rm删除的文件
 
-ls -l /proc/30888/fd
-
-cp /proc/30888/fd/3 save.img
+ls -l /proc/30888/fd  
+cp /proc/30888/fd/3 save.img  
