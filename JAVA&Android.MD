@@ -1,3 +1,12 @@
+
+- java进程的创建与销毁实时 
+	- adb logcat -b events | grep proc
+- 获取应用进程中组件详细信息
+	- adb shell dumpsys activity p <packageName>
+- 获取应用优先级信息
+	- adb shell dumpsys activity o
+
+
 # c++的函数调用过程中，是有传值和传引用的。
 
 ### 一个方法不能修改一个基本数据类型的参数（数值型和布尔型）。
