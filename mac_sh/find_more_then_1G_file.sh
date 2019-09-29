@@ -39,7 +39,8 @@ do
     subpath=$1/${filesub[$index+1]}
     cd $subpath
     subpath=$(pwd)
-    echo subpath=$subpath
+    #echo subpath=$subpath
+    du -sh $subpath
     $rootpath  $subpath
     let index+=2
 done
