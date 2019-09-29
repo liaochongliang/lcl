@@ -1,6 +1,6 @@
 # 快速寻找哪个盘占用资源多  
 du -sh *|grep G  
-du -sh *|grep G   | sed 's/.*[0-9]*G\(.*\)/\1/g'
+du -sh * |grep G | sed 's/.\*[0-9]\*G\\(.\*\\)/\1/g'
 
 
 # 统计mac 磁盘大小
