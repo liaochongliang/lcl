@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/bin/sh 
 # 寻找所有大于1G的文件
 # str="1.5G 权力的游戏.Game.of.Thrones.S08E06.1080p-天天美剧字幕组.mp4"
 # #arr=(${str//,/})
@@ -13,7 +12,36 @@
 # echo ${arr[1]}
 # exit 1
 
-rootpath=/Users/liaochongliang/Desktop/find_MoreThen_1G.sh
+rootpath_x0=$0
+bFull=0
+cd ~
+if [ -f "${rootpath_x0}" ] ;then
+    #echo ${rootpath_x0} is a fullpath file 
+    let bFull=1
+else
+    #echo ${rootpath_x0} is not a fullpath file
+    let bFull=0
+fi
+
+#返回正确的目录
+cd - >/dev/null
+
+# echo x0=$0
+# echo xpwd=$(pwd)
+
+rootpath=""
+#echo $#
+if [ $# != 2 ]; then
+    rootpath=$(pwd)/$0
+    #echo rootpath1=$rootpath
+else
+    rootpath=$0
+    #echo rootpath2=$rootpath
+fi
+
+if [ $bFull -eq 1 ];then
+    rootpath=$0   
+fi
 
 #echo "begain $1"
 
@@ -26,7 +54,7 @@ filesublist=$(du -sh * |grep G\\s)
 
 filesub=($filesublist)
 len=${#filesub[@]}
-#echo len=$len
+# echo len=$len
 # echo ${filesub[0]}
 # echo ${filesub[1]}
 # echo ${filesub[2]}
@@ -35,13 +63,23 @@ len=${#filesub[@]}
 index=0
 while [ $index -ne $len ]
 do
-    #echo ${filesub[$index+1]}
     subpath=$1/${filesub[$index+1]}
+    
+    #echo subpath=$subpath
+    #echo rootpath=$rootpath
+    
+    if [  -f "$subpath" ] ;then
+        #echo ${subpath} is a file 
+        echo "file=" $(du -sh $subpath)
+        exit 0
+    fi
+
     cd $subpath
     subpath=$(pwd)
-    #echo subpath=$subpath
     du -sh $subpath
-    $rootpath  $subpath
+    
+    #echo excute=$rootpath $subpath 1
+    $rootpath $subpath 1
     let index+=2
 done
 
