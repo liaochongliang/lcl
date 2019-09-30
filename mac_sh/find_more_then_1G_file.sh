@@ -94,7 +94,7 @@ do
     fi
 
     if [ -d "$subpath" ] ;then
-        echo "is a dir ""$subpath"
+        #echo "is a dir ""$subpath"
         cd "$subpath" >/dev/null
         subpath=$(pwd)
         du -sh "$subpath"
