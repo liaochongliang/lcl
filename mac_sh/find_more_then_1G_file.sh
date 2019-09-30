@@ -1,6 +1,6 @@
 #!/bin/sh 
 # 寻找所有大于1G的文件
-# uese age   ./find_more_then_1G_file.sh ~/Library
+# uese age   ./find_more_then_1G_file.sh ~/Library 
 
 # str="1.5G 权力的游戏.Game.of.Thrones.S08E06.1080p-天天美剧字幕组.mp4"
 # #afilesubrr=(${str//,/})
