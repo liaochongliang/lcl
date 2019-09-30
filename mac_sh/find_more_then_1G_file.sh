@@ -91,21 +91,18 @@ do
     if [  -f "$subpath" ] ;then
         # echo ${subpath} is a file 
         echo "file=" $(du -sh "$subpath")
-        exit 0
     fi
 
-    if [ ! -d "$subpath" ] ;then
-        echo "not a dir ""$subpath"
-        exit 0
+    if [ -d "$subpath" ] ;then
+        echo "is a dir ""$subpath"
+        cd "$subpath" >/dev/null
+        subpath=$(pwd)
+        du -sh "$subpath"
+        cd - >/dev/null
+    
+        #echo excute=$rootpath $subpath 1
+        $rootpath "${subpath}" 1
     fi
-
-    cd "$subpath" >/dev/null
-    subpath=$(pwd)
-    du -sh "$subpath"
-    cd - >/dev/null
-  
-    #echo excute=$rootpath $subpath 1
-    $rootpath "${subpath}" 1
 
 done < sum.txt
 
