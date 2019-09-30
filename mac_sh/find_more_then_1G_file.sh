@@ -1,16 +1,39 @@
 #!/bin/sh 
 # 寻找所有大于1G的文件
+# uese age   ./find_more_then_1G_file.sh ~/Library
+
 # str="1.5G 权力的游戏.Game.of.Thrones.S08E06.1080p-天天美剧字幕组.mp4"
-# #arr=(${str//,/})
-# arr=(${str})
-# for s in ${arr[@]}
+# #afilesubrr=(${str//,/})
+# filesub=(${str})
+# for s in ${filesub[@]}
 # do
 #    echo $s
 # done
 
-# echo ${arr[0]} 
-# echo ${arr[1]}
-# exit 1
+# len=${#filesub[@]}
+# echo len=$len
+
+# echo ${filesub[0]} 
+# echo ${filesub[1]}
+
+
+# user='mark:x:0:0:this is a test user:/var/mark:nologin'
+# i=1
+# while((1==1))
+# do
+#         split=`echo $user|cut -d ":" -f$i`
+#         if [ "$split" != "" ]
+#         then
+#                 ((i++))
+#                 echo $i
+#                 echo $split
+#         else
+#                 break
+#         fi
+# done
+
+
+
 
 rootpath_x0=$0
 bFull=0
@@ -46,41 +69,48 @@ fi
 #echo "begain $1"
 
 # fileroot="/Users/liaochongliang/Library/Android/sdk"
-fileroot=$1
+fileroot="$1"
 
-cd $fileroot
-filesublist=$(du -sh * |grep G\\s)
+cd "$fileroot" > /dev/null
+#echo fileroot=$fileroot
+
+#filesublist=$(du -sh * |grep G\\s)
+du -sh *  | grep "G\\s.*" -o | grep "[^G].*" -o > sum.txt
+# echo的会变成一行
+# echo $(du -sh *  | grep "G\\s.*" -o | grep "[^G].*" -o)
 #echo "find > 1G  "
 
-filesub=($filesublist)
-len=${#filesub[@]}
-# echo len=$len
-# echo ${filesub[0]}
-# echo ${filesub[1]}
-# echo ${filesub[2]}
-# echo ${filesub[3]}
+# cat sum.txt
 
-index=0
-while [ $index -ne $len ]
+while read subpath
 do
-    subpath=$1/${filesub[$index+1]}
-    
+    #echo fileroot=$fileroot
     #echo subpath=$subpath
     #echo rootpath=$rootpath
-    
+
     if [  -f "$subpath" ] ;then
-        #echo ${subpath} is a file 
-        echo "file=" $(du -sh $subpath)
+        # echo ${subpath} is a file 
+        echo "file=" $(du -sh "$subpath")
         exit 0
     fi
 
-    cd $subpath
+    if [ ! -d "$subpath" ] ;then
+        echo "not a dir ""$subpath"
+        exit 0
+    fi
+
+    cd "$subpath" >/dev/null
     subpath=$(pwd)
-    du -sh $subpath
-    
+    du -sh "$subpath"
+    cd - >/dev/null
+  
     #echo excute=$rootpath $subpath 1
-    $rootpath $subpath 1
-    let index+=2
-done
+    $rootpath "${subpath}" 1
+
+done < sum.txt
+
+exit 1
 
 #echo "ende $1"
+
+#https://blog.csdn.net/u010003835/article/details/80750003
