@@ -20,6 +20,9 @@ git tag -d <Tag 名字>  删除
 
 git push origin <Tag 名字>  推送
 git push origin --tags
+
+删除远程tag
+git push origin :refs/tags/v62_form_sdk1110014_to_sdk1110016
 ```
 
 # Commit 标准流程
