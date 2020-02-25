@@ -58,6 +58,8 @@ git diff --cached：是查看index file与commit的差别的。
 git diff HEAD：是查看working tree和commit的差别的。（你一定没有忘记，HEAD代表的是最近的一次commit的信息）
 git apply --check patch_1
 git apply patch_1
+git apply 1.patch --ignore-whitespace
+git apply 1.patch --reject
 
 持续Patch提交时
 git add .
