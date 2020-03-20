@@ -4,3 +4,7 @@
   - ls -ahl  $(find  .  -name "*.*")
   - chown -R jenkins:jenkins .
   - chmod 777 * -R
+
+
+- git 批量删除分支
+  - git branch |grep 'branchName' |xargs git branch -D
